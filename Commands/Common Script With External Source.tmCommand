@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+
+require "rubygems"
+gem "nokogiri"
+require "nokogiri"
+require "open-uri"
+
+require "#{ENV['TM_SUPPORT_PATH']}/lib/ui"
+
+
+page = Nokogiri::HTML(open("http://scriptsrc.net/"))
+library_urls = page.search("textarea.fetext")
+
+# returns { 'jquery' =&gt; 'http://...' }
+names = []
+name_urls = library_urls.inject({}) do |urls, url| 
+  name       = url.attr("id").sub(/^fe_text_/, '')
+  urls[name] = url.inner_html
+  names      &lt;&lt; name
+  urls
+end
+
+if selected_item = TextMate::UI.request_item(:title =&gt; 'Pick library:', :items =&gt; names)
+  url = name_urls[selected_item]
+  if ENV['TM_SCOPE'] =~ /^text.haml/
+    print "%script{ :src =&gt; '#{url}', :type =&gt; 'text/javascript', :charset =&gt; 'utf-8' }"
+  else
+    print "&lt;script src='#{url}' type='text/javascript' charset='utf-8'&gt;&lt;/script&gt;"
+  end
+end</string>
+	<key>input</key>
+	<string>none</string>
+	<key>name</key>
+	<string>Common Script With External Source</string>
+	<key>output</key>
+	<string>insertAsSnippet</string>
+	<key>scope</key>
+	<string>text.html, text.haml</string>
+	<key>tabTrigger</key>
+	<string>scriptsrc</string>
+	<key>uuid</key>
+	<string>046B8756-0644-4A58-B409-C2024788D4AA</string>
+</dict>
+</plist>
