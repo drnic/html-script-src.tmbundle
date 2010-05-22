@@ -10,12 +10,21 @@
 require "rubygems"
 gem "nokogiri"
 require "nokogiri"
-require "open-uri"
+require "net/http"
 
 require "#{ENV['TM_SUPPORT_PATH']}/lib/ui"
 
+def default_page
+  File.read(File.join(ENV['TM_BUNDLE_SUPPORT'], 'fixtures', 'scriptsrc-index.html'))
+end
 
-page = Nokogiri::HTML(open("http://scriptsrc.net/"))
+begin
+  html = Net::HTTP.start("scriptsrc.net") { |http| http.get('/') }
+rescue SocketError =&gt; e
+end
+html ||= default_page
+
+page = Nokogiri::HTML(html)
 library_urls = page.search("textarea.fetext")
 
 # returns { 'jquery' =&gt; 'http://...' }
