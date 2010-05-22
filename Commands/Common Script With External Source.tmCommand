@@ -19,7 +19,8 @@ def default_page
 end
 
 begin
-  html = Net::HTTP.start("scriptsrc.net") { |http| http.get('/') }
+  res = Net::HTTP.start("scriptsrc.net") { |http| http.get('/') }
+  html = res.body
 rescue SocketError =&gt; e
 end
 html ||= default_page
