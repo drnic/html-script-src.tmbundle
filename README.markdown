@@ -1,7 +1,7 @@
 Script Src TextMate bundle
 --------------------
 
-Select one of the libraries referenced at http://scriptsrc.net/ and insert the HTML (or Haml) &lt;script src=".."&gt; link into your document.
+Select one of the libraries referenced at [http://scriptsrc.net/](http://scriptsrc.net/) and insert the HTML (or Haml) &lt;script src=".."&gt; link into your document.
 
 Description
 ===========
