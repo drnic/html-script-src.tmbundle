@@ -16,11 +16,11 @@ Select the JavaScript library you want:
 
 In HTML or HTML(Rails) scopes you get instant HTML:
 
-<img src="http://img.skitch.com/20100522-8akhqstpqgcwt3h96ik5dfpsmw.png">
+<img src="http://img.skitch.com/20100522-dpftxx4d67eerpjp48kyye5ie3.png">
 
 In Haml you get instant Haml:
 
-<img src="http://img.skitch.com/20100522-cc161uxyt5xsqy2y66tsr5hk3u.png">
+<img src="http://img.skitch.com/20100522-x997q5yf7udayuy9g65kn8skdr.png">
 
 Installation
 ============
