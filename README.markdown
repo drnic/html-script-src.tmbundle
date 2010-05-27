@@ -33,6 +33,13 @@ To install via Git:
 
 Source can be viewed or forked via GitHub: [http://github.com/drnic/html-script-src.tmbundle](http://github.com/drnic/html-script-src.tmbundle)
 
+Other editors
+=============
+
+This script has also been ported to other editor(s):
+
+* [Emacs](http://github.com/rejeep/html-script-src) by [Johan Andersson](http://github.com/rejeep)
+
 
 Authors
 =======
